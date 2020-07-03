@@ -1,3 +1,23 @@
+# Changes 02.07.2020
+
+* updated all deployment manifest to apps/v1 version as the older one is no longer supported in current Kubernetes version
+* updated service manifests accordingly
+* replaced LoadBalancer front-end service by ClusterIP
+
+## Installation instructions
+
+* git clone
+* cd microservices-demo/deploy/kubernetes/
+* kubectl create namespace sock-shop
+* kubectl apply -f complete-demo.yaml
+* kubectl port-forward service/front-end 8079:8079 -n sock-shop
+* point your browser at http://localhost:8079
+* User accounts
+  * user/password
+  * user1/password
+  * Eve_Berger/eve
+* Tested on microk8s v1.3.4
+
 # Installing sock-shop on Kubernetes
 
 See the [documentation](https://microservices-demo.github.io/deployment/kubernetes-minikube.html) on how to deploy Sock Shop using Minikube.

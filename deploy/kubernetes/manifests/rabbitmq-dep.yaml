@@ -1,17 +1,20 @@
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rabbitmq
   labels:
-    name: rabbitmq
+    app: rabbitmq
   namespace: sock-shop
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
   template:
     metadata:
       labels:
-        name: rabbitmq
+        app: rabbitmq
       annotations:
         prometheus.io/scrape: "false"
     spec:

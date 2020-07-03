@@ -1,22 +1,24 @@
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-db
   labels:
-    name: user-db
+    app: user-db
   namespace: sock-shop
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: user-db
   template:
     metadata:
       labels:
-        name: user-db
+        app: user-db
     spec:
       containers:
       - name: user-db
         image: weaveworksdemos/user-db:0.3.0
-
         ports:
         - name: mongo
           containerPort: 27017
